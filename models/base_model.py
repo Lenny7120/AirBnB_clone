@@ -13,6 +13,9 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         """ Initialized a new BaseModel
+            Args:
+                *args: list of arguments
+                **kwargs: dict of key value arguments
         """
         if kwargs:
             for key, value in kwargs.items():
