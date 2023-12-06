@@ -2,10 +2,11 @@
 """ a console for the Airbnb project using cmd module"""
 import cmd
 
+
 class HBNBCommand(cmd.Cmd):
     """ the Airbnb console with hbnb as a prompt
     """
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
 
     def do_quit(self, arg):
         """Exit the command-line interface.
