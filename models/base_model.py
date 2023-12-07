@@ -30,10 +30,9 @@ class BaseModel:
                 if key == 'created_at' or key == 'update_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
-                    
-        if not kwargs or kwargs is None:
-             storage.new(self)
 
+        if not kwargs or kwargs is None:
+            storage.new(self)
 
     def __str__(self):
         """ Returns a printable representation of the obj.
