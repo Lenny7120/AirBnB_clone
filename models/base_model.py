@@ -4,6 +4,7 @@
 
 from datetime import datetime
 from uuid import uuid4
+from models.__init__ import storage
 
 
 class BaseModel:
@@ -29,6 +30,10 @@ class BaseModel:
                 if key == 'created_at' or key == 'update_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
+                    
+        if not kwargs or kwargs is None:
+             storage.new(self)
+
 
     def __str__(self):
         """ Returns a printable representation of the obj.
@@ -42,6 +47,7 @@ class BaseModel:
         """ Updates the `updated_at` to current date-time.
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ Returns a dic. containing all keys/values of
