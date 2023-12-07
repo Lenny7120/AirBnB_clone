@@ -18,7 +18,7 @@ class FileStorage:
         self.__objects[key] = obj
 
     def save(self):
-        serialized_obj  ects = {}
+        serialized_objects = {}
         for key, value in self.__objects.items():
             serialized_objects[key] = value.to_dict()
         with open(self.__file_path, 'w') as file:
