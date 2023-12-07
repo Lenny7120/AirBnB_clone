@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" Defines common attributes & methods for other classes.
+""" Defines a base model.
 """
 
 from datetime import datetime
@@ -12,25 +12,31 @@ class BaseModel:
     """
 
     def __init__(self, *args, **kwargs):
+
         """ Initialized a new BaseModel
             Args:
                 *args: list of arguments
                 **kwargs: dict of key value arguments
         """
+        # default attributes.
+        self.id = str(uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
+
+        # kwargs provided.
         if kwargs:
             for key, value in kwargs.items():
                 if key == 'created_at' or key == 'update_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
-                else:
-                    self.id = str(uuid4())
-                    self.created_at = datetime.now()
-                    self.updated_at = datetime.now()
 
     def __str__(self):
         """ Returns a printable representation of the obj.
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict)
+        cls_name = self.__class__.__name__
+        ins_id = self.id
+        ins_dict = self.__dict__
+        return f"[{cls_name}] ({ins_id}) {ins_dict}"
 
     def save(self):
         """ Updates the `updated_at` to current date-time.
