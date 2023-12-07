@@ -23,9 +23,12 @@ class BaseModel:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
                 else:
-                    self.id = str(uuid4())
+                                self.id = str(uuid4())
                     self.created_at = datetime.now()
                     self.updated_at = datetime.now()
+        if not kwargs or kwargs is None:
+             storage.new(self)
+
 
     def __str__(self):
         """ Returns a printable representation of the obj.
@@ -36,6 +39,7 @@ class BaseModel:
         """ Updates the `updated_at` to current date-time.
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """ Returns a dic. containing all keys/values of
