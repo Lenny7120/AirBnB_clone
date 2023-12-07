@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ a console for the Airbnb project using cmd module"""
 import cmd
+from models.base_model import BaseModel
 
 
 class HBNBCommand(cmd.Cmd):
@@ -25,7 +26,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_instance.id)
 
     def do_show(self, arg):
-        """Print string representation of an instance 
+        """Print string representation of an instance
         based on class name and id.
         Usage: show <class name> <id>
         """
@@ -42,7 +43,6 @@ class HBNBCommand(cmd.Cmd):
                 print(BaseModel.__objects[key])
             else:
                 print("** no instance found **")
-
 
     def do_destroy(self, arg):
         """Delete an instance base on class name and id
@@ -63,11 +63,10 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-
     def do_all(self, arg):
-        """Print the string representation of all 
+        """Print the string representation of all
         instances bases on class names or all class
-        Usagw: all [class name]
+        Usage: all [class name]
         """
         args = arg.split()
         obj_list = []
@@ -78,7 +77,6 @@ class HBNBCommand(cmd.Cmd):
                     print(obj_list)
                 else:
                     print("** class doesn't exist **")
-
 
     def do_update(self, args):
         """Update an instance based on class name and
@@ -99,14 +97,12 @@ class HBNBCommand(cmd.Cmd):
             key = "{}.{}".format(args[0], args[1])
             if key in BaseModel.__objects:
                 obj = BaseModel.__objects[key]
-                attr_name = args[2]
-                attr_value = args[3].strip('"')
-                setattr(obj, attr_name, type(getattr(obj, attr_name))(attr_value))
+                attr_nme = args[2]
+                attr_val = args[3].strip('"')
+                setattr(obj, attr_nme, type(getattr(obj, attr_nme))(attr_val))
                 obj.save()
             else:
                 print("** no instance found **")
-
-
 
     def do_quit(self, arg):
         """Exit the command-line interface.
