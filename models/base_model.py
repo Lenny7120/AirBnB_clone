@@ -30,7 +30,7 @@ class BaseModel:
     def __str__(self):
         """ Returns a printable representation of the obj.
         """
-        return "[self.__class__.__name__] (self.id) self.__dict__"
+        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict)
 
     def save(self):
         """ Updates the `updated_at` to current date-time.
