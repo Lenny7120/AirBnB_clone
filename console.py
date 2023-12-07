@@ -98,13 +98,13 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = "{}.{}".format(args[0], args[1])
             if key in BaseModel.__objects:
-            obj = BaseModel.__objects[key]
-            attr_name = args[2]
-            attr_value = args[3].strip('"')
-            setattr(obj, attr_name, type(getattr(obj, attr_name))(attr_value))
-            obj.save()
-        else:
-            print("** no instance found **")
+                obj = BaseModel.__objects[key]
+                attr_name = args[2]
+                attr_value = args[3].strip('"')
+                setattr(obj, attr_name, type(getattr(obj, attr_name))(attr_value))
+                obj.save()
+            else:
+                print("** no instance found **")
 
 
 
