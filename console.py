@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
-            if key in BaseMod.__objects:
+            if key in BaseModel.__objects:
                 print(BaseModel.__objects[key])
             else:
                 print("** no instance found **")
@@ -57,7 +57,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
-            if key in BaseMod.__objects:
+            if key in BaseModel.__objects:
             del BaseModel.__objects[key]
             BaseModel.save_to_file()
         else:
