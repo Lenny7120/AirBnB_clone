@@ -30,7 +30,6 @@ class BaseModel:
                 if key == 'created_at' or key == 'update_at':
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                     setattr(self, key, value)
-                    
                 else:
                     self.__dict__[key] = value
 
