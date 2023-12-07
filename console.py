@@ -58,8 +58,8 @@ class HBNBCommand(cmd.Cmd):
         else:
             key = "{}.{}".format(args[0], args[1])
             if key in BaseModel.__objects:
-            del BaseModel.__objects[key]
-            BaseModel.save_to_file()
+                del BaseModel.__objects[key]
+                BaseModel.save_to_file()
         else:
             print("** no instance found **")
 
