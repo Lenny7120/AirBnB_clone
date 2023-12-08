@@ -1,7 +1,12 @@
 #!/usr/bin/python3
 """ a console for the Airbnb project using cmd module"""
 import cmd
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
 from models.user import User
 from models import storage
 
@@ -11,7 +16,8 @@ class HBNBCommand(cmd.Cmd):
     """ the Airbnb console with hbnb as a prompt
     """
     prompt = "(hbnb) "
-    valid_classes = ["BaseModel", "User"]
+    valid_classes = ["BaseModel", "User", "State", "City",
+                     "Amenity", "Place", "Review"]
 
     def do_create(self, arg):
         """ Create a new instance of the Base Model,
