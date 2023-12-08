@@ -67,9 +67,10 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
-            if key in BaseModel.__objects:
-                del BaseModel.__objects[key]
-                BaseModel.save_to_file()
+            all_objs = storage.all()  # fix
+            if key in all_objs.keys():
+                del all_objs[key]
+                storage.save()
             else:
                 print("** no instance found **")
 
@@ -105,8 +106,9 @@ class HBNBCommand(cmd.Cmd):
             print("** value missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
-            if key in BaseModel.__objects:
-                obj = BaseModel.__objects[key]
+            all_objs = storage.all()  # fix
+            if key in all_objs.keys():
+                obj = all_objs[key]
                 attr_nme = args[2]
                 attr_val = args[3].strip('"')
                 setattr(obj, attr_nme, type(getattr(obj, attr_nme))(attr_val))
