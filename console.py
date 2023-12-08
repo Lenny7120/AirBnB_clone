@@ -5,11 +5,11 @@ from models import storage
 # from models.amenity import Amenity
 from models.base_model import BaseModel
 from models import storage
-# from models.city import City
-# from models.place import Place
-# from models.review import Review
-# from models.state import State
-# from models.user import User
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -30,7 +30,8 @@ class HBNBCommand(cmd.Cmd):
         elif args[0] not in self.valid_classes:
             print("** class doesn't exist **")
         else:
-            new_instance = BaseModel()
+            class_name = args[0]
+            new_instance = globals()[class_name]() # Instantiate dynamically
             new_instance.save()
             print(new_instance.id)
 
