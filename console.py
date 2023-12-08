@@ -2,7 +2,7 @@
 """ a console for the Airbnb project using cmd module"""
 import cmd
 from models import storage
-# from models.amenity import Amenity
+from models.amenity import Amenity
 from models.base_model import BaseModel
 from models import storage
 from models.city import City
