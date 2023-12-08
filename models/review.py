@@ -2,9 +2,13 @@
 """Defines a Review class.
 """
 
+
 from models.base_model import BaseModel
 
+
 class Review(BaseModel):
-      place_id = ""  # will be Place.id
-      user_id = ""  # will be User.id
-      text = ""
+    """ Represents a review."""
+
+    place_id = ""  # will be Place.id
+    user_id = ""  # will be User.id
+    text = ""

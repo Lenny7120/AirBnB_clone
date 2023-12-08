@@ -6,5 +6,5 @@ from models.base_model import BaseModel
 
 
 class State(BaseModel):
-      """ Represents a user's state."""
-      name = ""
+    """ Represents a user's state."""
+    name = ""
