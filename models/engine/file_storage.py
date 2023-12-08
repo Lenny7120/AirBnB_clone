@@ -2,6 +2,7 @@
 """This! module stores instances from the Baseclass"""
 
 import json
+from models.user import User
 
 
 class FileStorage:

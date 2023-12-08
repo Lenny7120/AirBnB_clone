@@ -2,7 +2,7 @@
 """ a console for the Airbnb project using cmd module"""
 import cmd
 from models.base_model import BaseModel
-from models.base_model import User
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
