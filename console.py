@@ -2,13 +2,14 @@
 """ a console for the Airbnb project using cmd module"""
 import cmd
 from models.base_model import BaseModel
+from models.base_model import User
 
 
 class HBNBCommand(cmd.Cmd):
     """ the Airbnb console with hbnb as a prompt
     """
     prompt = "(hbnb) "
-    valid_classes = ["BaseModel"]
+    valid_classes = ["BaseModel", "User"]
 
     def do_create(self, arg):
         """ Create a new instance of the Base Model,
@@ -78,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
                 else:
                     print("** class doesn't exist **")
 
-    def do_update(self, args):
+    def do_update(self, arg):
         """Update an instance based on class name and
         id by adding an attribute
         """
