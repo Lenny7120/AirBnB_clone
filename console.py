@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ a console for the Airbnb project using cmd module"""
 import cmd
+from models import storage
 # from models.amenity import Amenity
 from models.base_model import BaseModel
 # from models.city import City
@@ -46,8 +47,9 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
-            if key in BaseModel.__objects:
-                print(BaseModel.__objects[key])
+            all_objs = storage.all()  # fix
+            if key in all_objs.keys():
+                print(all_objs[key])
             else:
                 print("** no instance found **")
 
@@ -78,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
         args = arg.split()
         obj_list = []
         if not args or args[0] in self.valid_classes:
-            for key, obj in BaseModel.__objects.items():
+            for key, obj in storage.all().items():
                 if not args or key.split('.')[0] == args[0]:
                     obj_list.append(str(obj))
                     print(obj_list)
