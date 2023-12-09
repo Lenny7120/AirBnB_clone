@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ a console for the Airbnb project using cmd module"""
 import cmd
+import sys
 from models import storage
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -78,7 +79,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Print the string representation of all
         instances bases on class names or all class
-        Usage: all [class name]
+        Usage: all <class name> <id> <attrib_1> <value> ... 
         """
         args = arg.split()
         obj_list = []
@@ -93,6 +94,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Update an instance based on class name and
         id by adding an attribute
+        Usage: update [class name] 
         """
         args = arg.split()
         if not args:
@@ -116,14 +118,21 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
             else:
                 print("** no instance found **")
+                
+    def precmd(self, line):
+        """ Non-interactive functioning of console
+        """
+        if not sys.stdin.isatty():
+            print()
+        return line
 
     def do_quit(self, arg):
-        """Exit the command-line interface.
+        """ Exit the command-line interface.
         """
         return True
 
     def do_EOF(self, arg):
-        """Handle the End-of-file (EOF) signal
+        """ Handle the End-of-file (EOF) signal
         """
         return True
 
