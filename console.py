@@ -32,7 +32,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             class_name = args[0]
-            new_instance = globals()[class_name]() # Instantiate dynamically
+            # Instantiate dynamically
+            new_instance = globals()[class_name]()
             new_instance.save()
             print(new_instance.id)
 
@@ -79,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Print the string representation of all
         instances bases on class names or all class
-        Usage: all <class name> <id> <attrib_1> <value> ... 
+        Usage: all <class name> <id> <attrib_1> <value> ...
         """
         args = arg.split()
         obj_list = []
@@ -94,7 +95,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """Update an instance based on class name and
         id by adding an attribute
-        Usage: update [class name] 
+        Usage: update [class name]
         """
         args = arg.split()
         if not args:
@@ -118,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
             else:
                 print("** no instance found **")
-                
+
     def precmd(self, line):
         """ Non-interactive functioning of console
         """
