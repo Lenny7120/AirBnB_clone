@@ -150,6 +150,18 @@ class HBNBCommand(cmd.Cmd):
         print("*** Unknown syntax: {}".format(arg))
         return False
 
+    def do_count(self, arg):
+        """
+        Retrieve the number of instances of a class.
+        Usage: <class name>.count()
+        """
+        count = 0
+        for key in storage.all().keys():
+            class_name, instance_id = key.split(".")
+            if line == class_name:
+                count += 1
+        print(count)
+
     def precmd(self, line):
         """ Non-interactive functioning of console
         """
