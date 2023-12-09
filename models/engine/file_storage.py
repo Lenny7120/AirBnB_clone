@@ -45,10 +45,10 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
                 for key, value in data.items():
-                    
+
                     # Remove from the dictionary
                     del value["__class__"]
-                    
+
                     # Ensure conversion to datetime object
                     form = "%Y-%m-%dT%H:%M:%S.%f"
                     ck = "updated_at"  # Attribute to match

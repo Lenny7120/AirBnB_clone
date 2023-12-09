@@ -80,7 +80,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """Print the string representation of all
         instances bases on class names or all class
-        Usage: all <class name> <id> <attrib_1> <value> ...
+        Usage: all <class name>
         """
         args = arg.split()
         obj_list = []
@@ -119,6 +119,36 @@ class HBNBCommand(cmd.Cmd):
                 obj.save()
             else:
                 print("** no instance found **")
+
+    def default(self, arg):
+        """ Handle default behaviour when input is not recognized
+        """
+        v_cls_dict = {
+            'all': self.do_all,
+            # 'count': self.do_count,
+            'destroy': self.do_destroy,
+            'show': self.do_show,
+            'update': self.do_update
+        }
+
+        if "." in arg:
+            cmd, params = arg.split(".", 1)  # split only once
+            if "(" in params and params.endswith(")"):
+                method, _args = params.split("(", 1)
+                if '"' in _args and _args.count('"') == 2:
+                    print(method, _args)
+                    _args = _args.rstrip(")")  # remove the ")"
+                    _args = _args.replace('"', '')  # remove quotes
+                    if method in v_cls_dict:
+                        call = f"{cmd} {_args}"
+                        return v_cls_dict[method](call)
+                else:
+                    _args = ""
+                    if method in v_cls_dict:
+                        call = f"{cmd} {_args}"
+                        return v_cls_dict[method](call)
+        print("*** Unknown syntax: {}".format(arg))
+        return False
 
     def precmd(self, line):
         """ Non-interactive functioning of console
