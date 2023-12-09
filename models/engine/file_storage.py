@@ -47,9 +47,10 @@ class FileStorage:
                 for key, value in data.items():
                     # Ensure conversion to datetime object
                     form = "%Y-%m-%dT%H:%M:%S.%f"
-                    if 'updated_at' in value:
-                        value['updated_at'] = datetime.strptime(value['updated_at'], form)
-                        
+                    ck = "updated_at"  # Attribute to match
+                    if ck in value:
+                        value[ck] = datetime.strptime(value[ck], form)
+
                     class_name, obj_id = key.split('.')
                     obj_instance = eval(class_name)(**value)
                     self.__objects[key] = obj_instance
