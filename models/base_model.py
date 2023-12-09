@@ -2,9 +2,10 @@
 """ Defines a base model.
 """
 
+import models  # fix
 from datetime import datetime
 from uuid import uuid4
-from models import storage
+# from models import storage
 
 
 class BaseModel:
@@ -34,7 +35,7 @@ class BaseModel:
                     self.__dict__[key] = value
 
         if not kwargs or kwargs is None:
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """ Returns a printable representation of the obj.
@@ -48,7 +49,7 @@ class BaseModel:
         """ Updates the `updated_at` to current date-time.
         """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """ Returns a dic. containing all keys/values of
