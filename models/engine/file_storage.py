@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """This! module stores instances from the Baseclass"""
 
+from datetime import datetime
 import json
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -44,6 +45,11 @@ class FileStorage:
             with open(self.__file_path, 'r') as file:
                 data = json.load(file)
                 for key, value in data.items():
+                    # Ensure conversion to datetime object
+                    form = "%Y-%m-%dT%H:%M:%S.%f"
+                    if 'updated_at' in value:
+                        value['updated_at'] = datetime.strptime(value['updated_at'], form)
+                        
                     class_name, obj_id = key.split('.')
                     obj_instance = eval(class_name)(**value)
                     self.__objects[key] = obj_instance
