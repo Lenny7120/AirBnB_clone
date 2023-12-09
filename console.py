@@ -123,9 +123,9 @@ class HBNBCommand(cmd.Cmd):
     def default(self, arg):
         """ Handle default behaviour when input is not recognized
         """
-        v_cls_dict = {
+        method_dict = {
             'all': self.do_all,
-            # 'count': self.do_count,
+            'count': self.do_count,
             'destroy': self.do_destroy,
             'show': self.do_show,
             'update': self.do_update
@@ -136,17 +136,17 @@ class HBNBCommand(cmd.Cmd):
             if "(" in params and params.endswith(")"):
                 method, _args = params.split("(", 1)
                 if '"' in _args and _args.count('"') == 2:
-                    print(method, _args)
+                    # print(method, _args)
                     _args = _args.rstrip(")")  # remove the ")"
                     _args = _args.replace('"', '')  # remove quotes
-                    if method in v_cls_dict:
+                    if method in method_dict:
                         call = f"{cmd} {_args}"
-                        return v_cls_dict[method](call)
+                        return method_dict[method](call)
                 else:
                     _args = ""
-                    if method in v_cls_dict:
+                    if method in method_dict:
                         call = f"{cmd} {_args}"
-                        return v_cls_dict[method](call)
+                        return method_dict[method](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
 
@@ -155,15 +155,14 @@ class HBNBCommand(cmd.Cmd):
         Retrieve the number of instances of a class.
         Usage: <class name>.count()
         """
-        if arg.endswith('.count()'):
-            class_name = arg[:-8].strip()
+        args = arg.split()
+        if not args:
+            return
+        elif args[0] not in self.valid_classes:
+            return
         else:
-            args = arg.split()
-            if len(args) != 1:
-                print("Invalid usage")
-                return
-            class_name = arg[0]
-
+            class_name = args[0]
+            
         count = 0
         for key in storage.all().keys():
             stored_class_name, instance_id = key.split(".")
