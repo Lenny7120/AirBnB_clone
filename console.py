@@ -155,18 +155,14 @@ class HBNBCommand(cmd.Cmd):
         Retrieve the number of instances of a class.
         Usage: <class name>.count()
         """
-        args = arg.split('.')
-        if len(args) == 2:
-            if args[1].strip() == "count.()":
-                class_name = args[0].strip()
-            else:
-                print("Invaid format. Usage: <class name>.count()")
-                return
-        elif len(args) == 1:
-            class_name = args[0].strip()
+        if arg.endswith('.count()'):
+            class_name = arg[:-8].strip()
         else:
-            print("Invalid usage. Usage: 1. count <class name> | <class name>.count()")
-            return
+            args = arg.split()
+            if len(args) != 1:
+                print("Invalid usage")
+                return
+            class_name = arg[0]
 
         count = 0
         for key in storage.all().keys():
