@@ -6,6 +6,7 @@ import unittest
 import os
 import json
 from models.engine.file_storage import FileStorage
+import models
 from models import storage
 from models.amenity import Amenity
 from models.base_model import BaseModel
@@ -17,4 +18,15 @@ from models.user import User
 from datetime import datetime
 
 class TestFileStorage(unittest.TestCase):
+    """Test FileStorage for the City class."""
+    
+    def test_FileStorage_initialize(self):
+        self.assertEqual(type(models.storage), FileStorage)
+        
+    def test_FileStorage_instantiate_no_args(self):
+        self.assertEqual(type(FileStorage()), FileStorage)
+        
+    def test_FileStorage_instantiate_args(self):
+        with self.assertRaises(TypeError):
+            FileStorage(None)
     pass
