@@ -37,7 +37,7 @@ class TestCity(unittest.TestCase):
 
         b = City()
         self.assertEqual(str(type(b)), "<class 'models.city.City'>")
-        self.assertIsInstance(b, City)                                self.assertTrue(issubclass(type(b), BaseModel))
+        self.assertIsInstance(b, City)                                                                                              self.assertTrue(issubclass(type(b), BaseModel))
 
     def test_8_attributes(self):
         """Tests the attributes of City class."""

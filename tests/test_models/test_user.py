@@ -42,7 +42,7 @@ class TestUser(unittest.TestCase):
 
     def test_8_attributes(self):
         """Tests the attributes of User class."""
-        attributes = storage.attributes()["User"]
+        attributes_keys = User().__dict__.keys()
         o = User()
         for k, v in attributes.items():
             self.assertTrue(hasattr(o, k))
