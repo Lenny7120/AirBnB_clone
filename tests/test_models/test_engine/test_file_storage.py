@@ -15,29 +15,31 @@ from models.review import Review
 from models.state import State
 from models.user import User
 
+
 class TestFileStorage(unittest.TestCase):
     """Test cases for the FileStorage class."""
-    
+
     def test_FileStorage_initialize(self):
         self.assertEqual(type(models.storage), FileStorage)
-        
+
     def test_FileStorage_instantiate_no_args(self):
         self.assertEqual(type(FileStorage()), FileStorage)
-        
+
     def test_FileStorage_instantiate_args(self):
         with self.assertRaises(TypeError):
             FileStorage(None)
     pass
 
+
 class TestFileStorage_methods(unittest.TestCase):
     """Test cases for methods in the FileStorage class."""
-    
+
     def setUp(self):
         try:
             os.rename("file.json", "temp_file")
         except IOError:
             pass
-        
+
     def tearDown(self):
         try:
             os.remove("file.json")
@@ -68,7 +70,6 @@ class TestFileStorage_methods(unittest.TestCase):
         models.storage.new(state)
         models.storage.new(user)
 
-
         self.assertIn("BaseModel." + base.id, models.storage.all().keys())
         self.assertIn(base, models.storage.all().values())
         self.assertIn("User." + user.id, models.storage.all().keys())
@@ -83,14 +84,14 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn(amenity, models.storage.all().values())
         self.assertIn("Review." + review.id, models.storage.all().keys())
         self.assertIn(review, models.storage.all().values())
-        
+
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
 
     def test_all_args(self):
         with self.assertRaises(TypeError):
             models.storage.all(None)
-            
+
     def test_save(self):
         text = ""
 
@@ -122,7 +123,7 @@ class TestFileStorage_methods(unittest.TestCase):
             self.assertIn("Review." + review.id, text)
             self.assertIn("State." + state.id, text)
             self.assertIn("User." + user.id, text)
-            
+
     def test_reload(self):
         #  instantiate
         amenity = Amenity()
@@ -132,7 +133,7 @@ class TestFileStorage_methods(unittest.TestCase):
         review = Review()
         state = State()
         user = User()
-        
+
         # store to file
         models.storage.new(amenity)
         models.storage.new(base)
@@ -143,7 +144,7 @@ class TestFileStorage_methods(unittest.TestCase):
         models.storage.new(user)
         models.storage.save()
         models.storage.reload()
-        
+
         obj = FileStorage._FileStorage__objects
         self.assertIn("BaseModel." + base.id, obj)
         self.assertIn("User." + user.id, obj)
@@ -152,6 +153,7 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("City." + city.id, obj)
         self.assertIn("Amenity." + amenity.id, obj)
         self.assertIn("Review." + review.id, obj)
+
 
 if __name__ == "__main__":
     unittest.main()
