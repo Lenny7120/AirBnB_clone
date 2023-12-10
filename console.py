@@ -117,8 +117,13 @@ class HBNBCommand(cmd.Cmd):
                     for i in range(2, len(args), 2):
                         attr_nme = args[i]
                         attr_val = args[i + 1].strip('"')
-                        setattr(obj, attr_nme,
-                                type(getattr(obj, attr_nme))(attr_val))
+                        # check if attrib exists
+                        if hasattr(obj, attr_nme):
+                            setattr(obj, attr_nme,
+                                    type(getattr(obj, attr_nme))(attr_val))
+                        else:
+                            # add new attrib otherwise
+                            setattr(obj, attr_nme, attr_val)
                 obj.save()
             else:
                 print("** no instance found **")

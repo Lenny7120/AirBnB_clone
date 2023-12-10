@@ -8,7 +8,9 @@
     "BaseModel.10175041-21d9-4c95-859e-e94f8529c063": {
         "id": "10175041-21d9-4c95-859e-e94f8529c063",
         "created_at": "2023-12-10T21:07:47.887093",
-        "updated_at": "2023-12-10T21:07:47.887093",
+        "updated_at": "2023-12-10T21:56:11.901923",
+        "first_name": "John",
+        "last_name": "Doe",
         "__class__": "BaseModel"
     },
     "User.1f92c4a3-ecf1-4844-8090-a857a78c0e34": {
@@ -59,8 +61,8 @@
     "State.bb3a46a9-0ccb-45ae-8579-5f147b1e6637": {
         "id": "bb3a46a9-0ccb-45ae-8579-5f147b1e6637",
         "created_at": "2023-12-10T21:36:29.843564",
-        "updated_at": "2023-12-10T21:36:56.821059",
-        "name": "Ohio",
+        "updated_at": "2023-12-10T21:40:58.141243",
+        "name": "Cali",
         "__class__": "State"
     }
 }
