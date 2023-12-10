@@ -40,6 +40,6 @@ class TestReview(unittest.TestCase):
         self.assertIsInstance(b, Review)
         self.assertTrue(issubclass(type(b), BaseModel))
 
+
 if __name__ == "__main__":
     unittest.main()
-

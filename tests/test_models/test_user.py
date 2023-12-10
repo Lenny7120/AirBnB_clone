@@ -40,22 +40,23 @@ class TestUser(unittest.TestCase):
         self.assertIsInstance(b, User)
         self.assertTrue(issubclass(type(b), BaseModel))
 
-   # def test_8_attributes(self):
-    #    """Tests the attributes of User class."""
-     #   attributes_keys = User().__dict__.keys()
-      #  o = User()
-       # for k in attributes_keys:
-        #    print(f"checking attribute: {k}")
-         #   self.assertTrue(hasattr(o, k))
-          #  if k == ['created_at', 'updated_at']:
-           #     expected_type = datetime
-            #elif k == 'id':
-             #   expected_type = str
+    """ def test_8_attributes(self):
+        # Tests the attributes of User class.
+        attributes_keys = User().__dict__.keys()
+        o = User()
+        for k in attributes_keys:
+            print(f"checking attribute: {k}")
+            self.assertTrue(hasattr(o, k))
+            if k == ['created_at', 'updated_at']:
+                expected_type = datetime
+            elif k == 'id':
+                expected_type = str """
 
-            
-          #  actual_type = type(getattr(o, k, None))
-           # print(actual_type)
-            #self.assertEqual(actual_type, expected_type, f"Attribute {k} has unexpected type, got {actual_type} expected {expected_type}")
+
+# actual_type = type(getattr(o, k, None))
+# print(actual_type)
+# self.assertEqual(actual_type, expected_type, f"Attribute {k} has unexpected
+# type, got {actual_type} expected {expected_type}")
 
 
 if __name__ == "__main__":

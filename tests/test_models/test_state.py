@@ -40,5 +40,6 @@ class TestState(unittest.TestCase):
         self.assertIsInstance(b, State)
         self.assertTrue(issubclass(type(b), BaseModel))
 
+
 if __name__ == "__main__":
     unittest.main()

@@ -48,13 +48,16 @@ class TestCity(unittest.TestCase):
         for k in attribute_keys:
             self.assertTrue(hasattr(o, k))
             if k == ['created_at', 'update_at']:
-                expected_type = datetime
+                # expected_type
+                exp_type = datetime
             elif k == 'id':
-                expected_type = int
+                exp_type = int
             else:
-                expected_type = str
+                exp_type = str
             actual_type = type(getattr(o, k, None))
-            self.assertNotEqual(actual_type, expected_type, f"Attribute {k} has unexpected_type. expected {expected_type} got {actual_type}")
+            _msg = f"Attribute {k} has unexpected_type."
+            msg = _msg + f" expected {exp_type} got {actual_type}"
+            self.assertNotEqual(actual_type, exp_type, msg)
 
 
 if __name__ == "__main__":
