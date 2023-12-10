@@ -5,7 +5,6 @@ import sys
 from models import storage
 from models.amenity import Amenity
 from models.base_model import BaseModel
-from models import storage
 from models.city import City
 from models.place import Place
 from models.review import Review
@@ -121,7 +120,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** no instance found **")
 
     def default(self, arg):
-        """ Handle default behaviour when input is not recognized
+        """Handle default behaviour when input is not recognized
         """
         method_dict = {
             'all': self.do_all,
@@ -136,7 +135,6 @@ class HBNBCommand(cmd.Cmd):
             if "(" in params and params.endswith(")"):
                 method, _args = params.split("(", 1)
                 if '"' in _args and _args.count('"') == 2:
-                    # print(method, _args)
                     _args = _args.rstrip(")")  # remove the ")"
                     _args = _args.replace('"', '')  # remove quotes
                     if method in method_dict:
@@ -162,28 +160,28 @@ class HBNBCommand(cmd.Cmd):
             return
         else:
             class_name = args[0]
-            
+
         count = 0
         for key in storage.all().keys():
             stored_class_name, instance_id = key.split(".")
-            if class_name  == stored_class_name:
+            if class_name == stored_class_name:
                 count += 1
         print(count)
 
     def precmd(self, line):
-        """ Non-interactive functioning of console
+        """Non-interactive functioning of console
         """
         if not sys.stdin.isatty():
             print()
         return line
 
     def do_quit(self, arg):
-        """ Exit the command-line interface.
+        """Exit the command-line interface.
         """
         return True
 
     def do_EOF(self, arg):
-        """ Handle the End-of-file (EOF) signal
+        """Handle the End-of-file (EOF) signal
         """
         return True
 
