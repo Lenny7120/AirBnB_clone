@@ -136,16 +136,22 @@ class HBNBCommand(cmd.Cmd):
             'count': self.do_count,
             'destroy': self.do_destroy,
             'show': self.do_show,
-            'update': self.do_update
+            # 'update': self.do_update
         }
 
         if "." in arg:
             cls_name, params = arg.split(".", 1)  # split only once
             if "(" in params and params.endswith(")"):
                 method, _args = params.split("(", 1)
-                """ if method == "update":
-                    upd_args = _args.rstrip(")").replace(",", "").split()
-                    print(upd_args) """
+                if method == "update":
+                    update_args = params.rstrip(")").split("(")[1]
+                    # Split arguments by comma and strip whitespace
+                    upd_args = [arg.strip().strip('"')
+                                for arg in update_args.split(",")]
+                    cls_and_id = cls_name.split()
+                    cls_name = cls_and_id[1] if len(cls_and_id) > 1 else ""
+                    upd_call = f"{cls_name} {cls_and_id[0]} "
+                    return self.do_update(upd_call + ' '.join(upd_args))
 
                 if '"' in _args and _args.count('"') == 2:
                     _args = _args.rstrip(")")  # remove the ")"

@@ -49,7 +49,10 @@
     "BaseModel.3e29269c-d4c7-493a-8dcf-ebeb0a23e147": {
         "id": "3e29269c-d4c7-493a-8dcf-ebeb0a23e147",
         "created_at": "2023-12-10T21:08:00.615082",
-        "updated_at": "2023-12-10T21:08:00.615644",
+        "updated_at": "2023-12-10T22:43:25.183252",
+        "first_name": "foo",
+        "last_name": "bar",
+        "age": "10",
         "__class__": "BaseModel"
     },
     "Place.b24838c1-84c7-41ad-8e93-f556a9e33e91": {
@@ -61,8 +64,25 @@
     "State.bb3a46a9-0ccb-45ae-8579-5f147b1e6637": {
         "id": "bb3a46a9-0ccb-45ae-8579-5f147b1e6637",
         "created_at": "2023-12-10T21:36:29.843564",
-        "updated_at": "2023-12-10T21:40:58.141243",
-        "name": "Cali",
+        "updated_at": "2023-12-10T22:35:04.323815",
+        "name": "No",
+        "man's": "land",
         "__class__": "State"
+    },
+    "Review.43678853-8e2a-4ef2-85cf-99ecc2e6e7ee": {
+        "id": "43678853-8e2a-4ef2-85cf-99ecc2e6e7ee",
+        "created_at": "2023-12-10T22:36:15.946700",
+        "updated_at": "2023-12-10T22:37:37.120690",
+        "name": "home",
+        "age": "89",
+        "__class__": "Review"
+    },
+    "City.c2caa015-da0e-491f-a84b-cabc36f2b267": {
+        "id": "c2caa015-da0e-491f-a84b-cabc36f2b267",
+        "created_at": "2023-12-10T22:44:50.749512",
+        "updated_at": "2023-12-10T22:45:26.646365",
+        "first_name": "John",
+        "last_name": "Johnson",
+        "__class__": "City"
     }
 }
