@@ -1,0 +1,66 @@
+{
+    "User.f049c123-f5bd-45b7-b6ec-16f9b0cb7c2a": {
+        "id": "f049c123-f5bd-45b7-b6ec-16f9b0cb7c2a",
+        "created_at": "2023-12-10T21:07:42.227588",
+        "updated_at": "2023-12-10T21:07:42.228743",
+        "__class__": "User"
+    },
+    "BaseModel.10175041-21d9-4c95-859e-e94f8529c063": {
+        "id": "10175041-21d9-4c95-859e-e94f8529c063",
+        "created_at": "2023-12-10T21:07:47.887093",
+        "updated_at": "2023-12-10T21:07:47.887093",
+        "__class__": "BaseModel"
+    },
+    "User.1f92c4a3-ecf1-4844-8090-a857a78c0e34": {
+        "id": "1f92c4a3-ecf1-4844-8090-a857a78c0e34",
+        "created_at": "2023-12-10T21:07:50.567168",
+        "updated_at": "2023-12-10T21:07:50.567168",
+        "__class__": "User"
+    },
+    "User.937396b1-1f26-46d5-aeac-7d65ff6ab34f": {
+        "id": "937396b1-1f26-46d5-aeac-7d65ff6ab34f",
+        "created_at": "2023-12-10T21:07:52.713044",
+        "updated_at": "2023-12-10T21:07:52.713044",
+        "__class__": "User"
+    },
+    "User.ba1d8b0c-7cee-4a34-ae8a-a95df7b9fec8": {
+        "id": "ba1d8b0c-7cee-4a34-ae8a-a95df7b9fec8",
+        "created_at": "2023-12-10T21:07:54.194545",
+        "updated_at": "2023-12-10T21:07:54.194575",
+        "__class__": "User"
+    },
+    "BaseModel.fabda9b5-b2e5-41b3-ac07-b3f6f131890d": {
+        "id": "fabda9b5-b2e5-41b3-ac07-b3f6f131890d",
+        "created_at": "2023-12-10T21:07:55.581116",
+        "updated_at": "2023-12-10T21:07:55.581116",
+        "__class__": "BaseModel"
+    },
+    "User.67eac3a9-e7e7-4842-9a92-c022aae81e03": {
+        "id": "67eac3a9-e7e7-4842-9a92-c022aae81e03",
+        "created_at": "2023-12-10T21:07:56.506535",
+        "updated_at": "2023-12-10T21:26:05.570138",
+        "first_name": "John",
+        "last_name": "Mason",
+        "email": "mail@mail.com",
+        "__class__": "User"
+    },
+    "BaseModel.3e29269c-d4c7-493a-8dcf-ebeb0a23e147": {
+        "id": "3e29269c-d4c7-493a-8dcf-ebeb0a23e147",
+        "created_at": "2023-12-10T21:08:00.615082",
+        "updated_at": "2023-12-10T21:08:00.615644",
+        "__class__": "BaseModel"
+    },
+    "Place.b24838c1-84c7-41ad-8e93-f556a9e33e91": {
+        "id": "b24838c1-84c7-41ad-8e93-f556a9e33e91",
+        "created_at": "2023-12-10T21:08:07.527149",
+        "updated_at": "2023-12-10T21:08:07.527149",
+        "__class__": "Place"
+    },
+    "State.bb3a46a9-0ccb-45ae-8579-5f147b1e6637": {
+        "id": "bb3a46a9-0ccb-45ae-8579-5f147b1e6637",
+        "created_at": "2023-12-10T21:36:29.843564",
+        "updated_at": "2023-12-10T21:36:56.821059",
+        "name": "Ohio",
+        "__class__": "State"
+    }
+}

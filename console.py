@@ -112,9 +112,13 @@ class HBNBCommand(cmd.Cmd):
             all_objs = storage.all()  # fix
             if key in all_objs.keys():
                 obj = all_objs[key]
-                attr_nme = args[2]
-                attr_val = args[3].strip('"')
-                setattr(obj, attr_nme, type(getattr(obj, attr_nme))(attr_val))
+                # fix
+                if len(args) % 2 == 0:  # correct pairs of attrib & val
+                    for i in range(2, len(args), 2):
+                        attr_nme = args[i]
+                        attr_val = args[i + 1].strip('"')
+                        setattr(obj, attr_nme,
+                                type(getattr(obj, attr_nme))(attr_val))
                 obj.save()
             else:
                 print("** no instance found **")
@@ -131,19 +135,23 @@ class HBNBCommand(cmd.Cmd):
         }
 
         if "." in arg:
-            cmd, params = arg.split(".", 1)  # split only once
+            cls_name, params = arg.split(".", 1)  # split only once
             if "(" in params and params.endswith(")"):
                 method, _args = params.split("(", 1)
+                """ if method == "update":
+                    upd_args = _args.rstrip(")").replace(",", "").split()
+                    print(upd_args) """
+
                 if '"' in _args and _args.count('"') == 2:
                     _args = _args.rstrip(")")  # remove the ")"
                     _args = _args.replace('"', '')  # remove quotes
                     if method in method_dict:
-                        call = f"{cmd} {_args}"
+                        call = f"{cls_name} {_args}"
                         return method_dict[method](call)
                 else:
                     _args = ""
                     if method in method_dict:
-                        call = f"{cmd} {_args}"
+                        call = f"{cls_name} {_args}"
                         return method_dict[method](call)
         print("*** Unknown syntax: {}".format(arg))
         return False
