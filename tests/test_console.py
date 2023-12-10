@@ -58,14 +58,15 @@ EOF  all  count  create  destroy  help  quit  show  update\n
         # modelling what happens when user types `quit`
         msg = f.getvalue().strip().split('\n')
         # self.assertTrue(len(msg) == 1)
-        self.assertEqual(len(msg), 1, f"Expected length 1, got{len(msg)}.\nOutput:{msg}")
+        message = f"Expected length 1, got{len(msg)}.\nOutput:{msg}"
+        self.assertEqual(len(msg), 1, message)
 
-       # with patch('sys.stdout', new=StringIO()) as f:
+        # with patch('sys.stdout', new=StringIO()) as f:
         #    HBNBCommand().onecmd("EOF garbage")
         # modelling when user types `EOF anything`
-      #  msg = f.getvalue()
-       # self.assertTrue(len(msg) == 1)
-        #self.assertEqual("\n", msg)
+        #  msg = f.getvalue()
+        # self.assertTrue(len(msg) == 1)
+        # self.assertEqual("\n", msg)
 
     # Test cases for emptyline
     def test_do_emptyline(self):
