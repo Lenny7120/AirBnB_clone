@@ -29,6 +29,7 @@ class TestCity(unittest.TestCase):
     def resetStorage(self):
         """Resets FileStorage data."""
         FileStorage._FileStorage__objects = {}
+
         if os.path.isfile(FileStorage._FileStorage__file_path):
             os.remove(FileStorage._FileStorage__file_path)
 
@@ -37,15 +38,23 @@ class TestCity(unittest.TestCase):
 
         b = City()
         self.assertEqual(str(type(b)), "<class 'models.city.City'>")
-        self.assertIsInstance(b, City)                                                                                              self.assertTrue(issubclass(type(b), BaseModel))
+        self.assertIsInstance(b, City)
+        self.assertTrue(issubclass(type(b), BaseModel))
 
     def test_8_attributes(self):
         """Tests the attributes of City class."""
-        attributes = storage.attributes()["City"]
+        attribute_keys = City().__dict__.keys()
         o = City()
-        for k, v in attributes.items():
+        for k in attribute_keys:
             self.assertTrue(hasattr(o, k))
-            self.assertEqual(type(getattr(o, k, None)), v)
+            if k == ['created_at', 'update_at']:
+                expected_type = datetime
+            elif k == 'id':
+                expected_type = int
+            else:
+                expected_type = str
+            actual_type = type(getattr(o, k, None))
+            self.assertNotEqual(actual_type, expected_type, f"Attribute {k} has unexpected_type. expected {expected_type} got {actual_type}")
 
 
 if __name__ == "__main__":

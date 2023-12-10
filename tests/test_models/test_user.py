@@ -44,9 +44,18 @@ class TestUser(unittest.TestCase):
         """Tests the attributes of User class."""
         attributes_keys = User().__dict__.keys()
         o = User()
-        for k, v in attributes.items():
+        for k in attributes_keys:
+            print(f"checking attribute: {k}")
             self.assertTrue(hasattr(o, k))
-            self.assertEqual(type(getattr(o, k, None)), v)
+            if k == ['created_at', 'updated_at']:
+                expected_type = datetime
+            else:
+                expected_type = int
+
+            
+            actual_type = type(getattr(o, k, None))
+            print(actual_type)
+            self.assertEqual(actual_type, expected_type, f"Attribute {k} has unexpected type, got {actual_type} expected {expected_type}")
 
 
 if __name__ == "__main__":
